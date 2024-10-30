@@ -27,7 +27,7 @@ public:
         }
     }
 
-    //Destrictor
+    //Destructor
     ~Matrix() {
         for (int i = 0; i < rows; i++) {
             delete[] matrix[i];
