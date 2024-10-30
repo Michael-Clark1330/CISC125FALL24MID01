@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 template <typename T> class Matrix {
@@ -124,7 +125,7 @@ public:
     friend ostream& operator<<(ostream& print, Matrix<T>& obj) {
         for (int a = 0; a < obj.rows; a++) {
             for (int b = 0; b < obj.cols; b++) {
-                print << obj.matrix[a][b] << "     ";
+                print << setw(7) << obj.matrix[a][b];
             }
             print << "\n";
         }
@@ -170,8 +171,13 @@ int main() {
 
     Matrix<int> matrixA = m1 + m2;
     Matrix<int> matrixM = m1 * m2;
-    Matrix<int> matrixS = m1.scalarMult(2);
-    Matrix<int> matrixT = m1.transpose();
+    Matrix<int> matrixS = m1.scalarMult(2.0);
+    Matrix<int> matrixT = matrixS.transpose();
+
+    cout << "Matrix Sum (Matrix 1 + Matrix 2):\n" << matrixA;
+    cout << "Matrix Product (Matrix 1 * Matrix 2):\n" << matrixM;
+    cout << "Matrix 1 after scalar multiplication by 2:\n" << matrixS;
+    cout << "Transpose of Matrix 1:\n" << matrixT;
 
     return 0;
 }
