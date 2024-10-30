@@ -1,4 +1,4 @@
-#include <iostream>
+##include <iostream>
 #include <iomanip>
 using namespace std;
 
@@ -98,6 +98,7 @@ public:
         }
         else {
             cout << "Error: incompatable dimensions";
+            return second;
         }
     }
 
