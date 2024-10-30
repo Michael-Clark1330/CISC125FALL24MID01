@@ -16,14 +16,12 @@ public:
         }
     }
 
-    T& operator[] (int index);
-
     //Matrix value input function
     void getInput() {
         cout << "Enter elements for a " << this->rows << "x" << this->cols << " matrix:\n";
          for (int a = 0; a < this->rows; a++) {
             for (int b = 0; b < this->cols; b++) {
-                cin >> this[a][b];
+                cin >> this->matrix[a][b];
             }
         }
     }
@@ -75,13 +73,14 @@ public:
             Matrix<T> sum(this->rows, this->cols);
             for (int a = 0; a < this->rows; a++) {
                 for (int b = 0; b < this->rows; b++) {
-                    sum[a][b] = this[a][b] + second[a][b];
+                    sum.matrix[a][b] = this->matrix[a][b] + second.matrix[a][b];
                 }
             }
             return sum;
         }
         else {
             cout << "Error: incompatable dimensions";
+            return second;
         }
     }
 
@@ -91,7 +90,7 @@ public:
             Matrix<T> difference(this->rows, this->cols);
             for (int a = 0; a < this->rows; a++) {
                 for (int b = 0; b < this->rows; b++){
-                    difference[a][b] = this[a][b] - second[a][b];
+                    difference.matrix[a][b] = this.matrix[a][b] - second.matrix[a][b];
                 }
             }
             return difference;
@@ -107,9 +106,9 @@ public:
             Matrix<T> product(this->rows, second.cols);
             for (int a = 0; a < this->rows; a++) {
                 for (int b = 0; b < second.cols; b++) {
-                    product[a][b] = 0;
+                    product.matrix[a][b] = 0;
                     for (int c = 0; c < this->cols; c++) {
-                        product[a][b] += this[a][c] * second[c][b];
+                        product.matrix[a][b] += this->matrix[a][c] * second.matrix[c][b];
                     }
                 }
             }
@@ -117,6 +116,7 @@ public:
         }
         else {
             cout << "Error: incompatable dimensions";
+            return second;
         }
     }
 
@@ -136,7 +136,7 @@ public:
         Matrix<T> out(this->rows, this->cols);
         for (int a = 0; a < this->rows; a++) {
             for (int b = 0; b < this->cols; b++) {
-                out[a][b] = this[a][b] * scalar;
+                out.matrix[a][b] = this->matrix[a][b] * scalar;
             }
         }
         return out;
@@ -147,7 +147,7 @@ public:
         Matrix<T> out(this->rows, this->cols);
         for (int a = 0; a < this->rows; a++) {
             for (int b = 0; b < this->cols; b++) {
-                out[b][a] = this[a][b];
+                out.matrix[b][a] = this->matrix[a][b];
             }
         }
         return out; 
