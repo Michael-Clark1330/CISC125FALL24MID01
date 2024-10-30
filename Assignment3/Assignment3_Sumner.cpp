@@ -9,12 +9,14 @@ private:
 
 public:
     //Constructor
-    Matrix(T irows, T icols) : rows(irows), cols(icols) {
+    Matrix(int irows, int icols) : rows(irows), cols(icols) {
         matrix = new T*[rows];
         for (int i = 0; i < rows; i++) {
             matrix[i] = new T[cols];
         }
     }
+
+    T& operator[] (int index);
 
     //Matrix value input function
     void getInput() {
