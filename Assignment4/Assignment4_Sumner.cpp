@@ -43,7 +43,7 @@ public:
     //function to deposit money
     void deposit(double depositM) {
         try{
-            if (depositM <= 0.0) {
+            if (depositM < 0.0) {
             throw InvalidAmountException();
             }
 
@@ -62,7 +62,7 @@ public:
                 throw InsufficientFundsException();
             }
 
-            else if (withdrawM <= 0.0) {
+            else if (withdrawM < 0.0) {
                 throw InvalidAmountException();
             }
 
